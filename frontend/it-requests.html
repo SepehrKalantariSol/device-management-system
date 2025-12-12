@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IT Requests – Device Management System</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="page-it-requests">
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="home.html" class="site-title">Device Management System</a>
+  </div>
+
+  <nav class="top-nav">
+    <span id="user-info"></span>
+    <a href="home.html" class="btn btn-small">Home</a>
+    <a href="profile.html" class="btn btn-small">Profile</a>
+    <a href="index.html" class="btn btn-small">Logout</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Open Requests (Unassigned)</h2>
+    <div id="open-requests" class="requests-list">
+      <p class="placeholder">Loading...</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>My Assigned Requests (In Progress)</h2>
+    <div id="my-requests" class="requests-list">
+      <p class="placeholder">Loading...</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Recently Resolved (optional)</h2>
+    <div id="resolved-requests" class="requests-list">
+      <p class="placeholder">Loading...</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/it-requests.js"></script>
+</body>
+</html>

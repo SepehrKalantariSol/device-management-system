@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home – Device Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-home">
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="home.html" class="site-title">Device Management System</a>
+  </div>
+
+  <nav class="top-nav">
+    <span id="user-info"></span>
+    <a href="profile.html" class="btn btn-small">Profile</a>
+    <a href="index.html" class="btn btn-small">Logout</a>
+  </nav>
+</header>
+
+<main class="container grid-2">
+    <section class="card">
+        <h2>My Devices</h2>
+        <div id="devices-list">
+            <p class="placeholder">No devices loaded yet.</p>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>My Support Requests</h2>
+        <div id="requests-list">
+            <p class="placeholder">No requests found.</p>
+        </div>
+
+            <a id="new-request-btn" href="create-request.html" class="btn btn-primary btn-block">
+            Create New Request
+            </a>
+    </section>
+
+<!-- IT Technician Panel (hidden for normal users) -->
+<section id="it-panel" class="card" style="display:none;">
+  <h2>IT Technician Panel</h2>
+
+  <div id="it-recent-requests" class="requests-list">
+    <p class="muted">Loading...</p>
+  </div>
+
+  <div class="form-actions">
+    <a href="it-requests.html" class="btn btn-primary">View all requests</a>
+  </div>
+</section>
+
+</main>
+
+
+
+<script src="js/home.js"></script>
+</body>
+</html>

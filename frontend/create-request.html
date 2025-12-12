@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Request – Device Management System</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="page-create-request">
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="home.html" class="site-title">Device Management System</a>
+  </div>
+
+  <nav class="top-nav">
+    <span id="user-info"></span>
+    <a href="home.html" class="btn btn-small">Home</a>
+    <a href="profile.html" class="btn btn-small">Profile</a>
+    <a href="index.html" class="btn btn-small">Logout</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="card card-form">
+    <h2>Create New Support Request</h2>
+
+    <form id="create-request-form">
+      <div class="form-group">
+        <label for="req-device">Device</label>
+        <select id="req-device" required>
+          <option value="">Loading devices...</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="req-priority">Priority</label>
+          <select id="req-priority" required>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="req-type">Type</label>
+          <select id="req-type" required>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+            <option value="network">Network</option>
+            <option value="access">Access</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="req-description">Description</label>
+        <textarea id="req-description" rows="4" required
+          placeholder="Describe the issue clearly..."></textarea>
+      </div>
+
+<div class="form-actions">
+  <button type="submit" class="btn btn-block btn-primary">Submit Request</button>
+  <a href="home.html" class="btn btn-block btn-primary">Cancel</a>
+</div>
+
+      <p id="req-error" class="form-error"></p>
+      <p id="req-success" class="form-success"></p>
+    </form>
+  </section>
+</main>
+
+<script src="js/create-request.js"></script>
+</body>
+</html>
