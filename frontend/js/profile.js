@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Update failed");
 
-      okEl.textContent = "Profile updated successfully ✅";
+      okEl.textContent = "Profile updated successfully";
 
       // Update localStorage name shown in header across pages
       user.first_name = payload.first_name;

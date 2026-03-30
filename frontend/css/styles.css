@@ -119,9 +119,9 @@ input[type="password"] {
   align-items: center;
   justify-content: center;
 
-  font-family: inherit;   /* ⭐ REQUIRED */
-  font-size: inherit;     /* ⭐ REQUIRED */
-  line-height: 1;         /* ⭐ REQUIRED */
+  font-family: inherit;   
+  font-size: inherit;     
+  line-height: 1;         
 
   padding: 0.6rem 1.2rem;
   min-height: 40px;
