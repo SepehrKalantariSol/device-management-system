@@ -1,141 +1,177 @@
-DEVICE MANAGEMENT SYSTEM
-========================
+# Device Management System
 
-Overview
---------
-The Device Management System is a full-stack web application designed to manage IT assets and support requests within an organisation (e.g., university or enterprise environment).
+A full-stack web application for managing devices, users, and IT support requests within an organization.  
+This system simulates a real-world IT asset management and support workflow, including device tracking, user roles, and request lifecycle management.
 
-The system allows users (students/staff) to report device-related issues and enables IT technicians to manage, track, and resolve these requests through a structured workflow.
+---
 
-This project demonstrates end-to-end software engineering, including backend API development, database design, and frontend integration.
+## Overview
 
+The Device Management System allows organizations to:
 
-Features
---------
+- Track devices across buildings and rooms  
+- Manage staff and IT technicians  
+- Create and manage support requests  
+- Assign and resolve issues through a structured workflow  
+- Maintain a centralized relational database for all assets and users  
 
-User Functionality:
-- User login and authentication
-- View available devices
-- Submit support requests
-- Track request status
+This project demonstrates backend API development, relational database design, and frontend integration.
 
-Technician Functionality:
-- View all support requests
-- Assign requests
-- Update request status (open → in_progress → resolved)
-- Add resolution comments
+---
 
-System Features:
-- Role-based access control (RBAC)
-- Device tracking with location (Building → Room)
-- Full request lifecycle management
-- Input validation and error handling
-- Secure backend API
+## Key Features
 
+### Device Management
+- Create, view, and manage devices
+- Track device location (building and room)
+- Store device metadata (serial number, status, warranty, etc.)
 
-System Architecture
--------------------
+### Request Workflow System
+- Create support requests linked to devices
+- Assign requests to IT technicians
+- Track request status: open → in_progress → resolved
+- Add comments and resolution details
 
-Frontend (HTML, CSS, JavaScript)
-        ↓
-Flask REST API (Python)
-        ↓
-PostgreSQL Database
+### User and Role Management
+- Create users (staff and IT technicians)
+- Assign roles dynamically via relational mapping
+- Retrieve user profiles and activity
 
+### Relational Database Design
+- Fully normalized PostgreSQL schema
+- Use of foreign keys and junction tables (person_role)
+- Structured entity relationships (device → room → building)
 
-Technologies Used
------------------
+---
 
-Programming:
-- Python
-- JavaScript
-- SQL
+## System Architecture
 
-Backend:
-- Flask (REST API)
+Frontend (HTML, CSS, JavaScript)  
+↓  
+REST API (Flask)  
+↓  
+PostgreSQL Database  
 
-Frontend:
-- HTML
-- CSS
-- JavaScript
+- Frontend: Static pages with JavaScript handling API requests  
+- Backend: Flask REST API with structured endpoints  
+- Database: PostgreSQL with normalized schema and constraints  
 
-Database:
-- PostgreSQL
-- psycopg2
+---
 
-Tools:
-- Git
-- Linux
-- Virtual environments (venv)
-- DBeaver / pgAdmin
+## Tech Stack
 
+- Backend: Python (Flask)
+- Database: PostgreSQL
+- Frontend: HTML, CSS, JavaScript
+- Libraries:
+  - psycopg2
+  - Flask-CORS
 
-How to Run the Project
-----------------------
+---
 
-1. Setup Database
+## Project Structure
 
-psql -U <your_username> -h localhost device_mng
+backend/  
+    app.py  
 
-To exit:
-\q
+database/  
+    schema.sql  
 
+docs/  
+    D2_design_document.pdf  
 
-2. Start Backend (Flask API)
+frontend/  
+    css/  
+    js/  
+    *.html  
 
-cd backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 app.py
+.gitignore  
+README.md  
 
-Backend will run at:
-http://127.0.0.1:5000
+---
 
+## Setup and Installation
 
-3. Start Frontend
+1. Clone the repository
 
-Open a new terminal:
+git clone https://github.com/your-username/device-management-system.git  
+cd device-management-system  
 
-cd frontend
-python3 -m http.server 8000
+2. Setup virtual environment
 
-Frontend will run at:
-http://127.0.0.1:8000
+python -m venv venv  
+source venv/bin/activate  
 
-Open in browser:
-http://127.0.0.1:8000/index.html
+3. Install dependencies
 
+pip install flask psycopg2 flask-cors  
 
-How to Stop the Project
------------------------
+4. Configure environment variables
 
-- Press CTRL + C in each terminal
-- To deactivate virtual environment:
-deactivate
+export DB_NAME=device_mng  
+export DB_USER=postgres  
+export DB_PASSWORD=your_password  
+export DB_HOST=localhost  
+export DB_PORT=5432  
 
+5. Setup database
 
-Ports Used
-----------
+Create a PostgreSQL database, then run:
 
-Backend API:  http://127.0.0.1:5000
-Frontend UI:  http://127.0.0.1:8000
+psql -U postgres -d device_mng -f database/schema.sql  
 
+6. Run the backend
 
-Notes
------
+python backend/app.py  
 
-- Backend must be running before using the frontend
-- Both backend and frontend must run at the same time
-- This project is intended for local development
+7. Open frontend
 
+Open frontend/index.html in your browser.
 
-Skills Demonstrated
--------------------
+---
 
-- Full-stack development
-- REST API design
-- Database design (normalisation, relationships)
-- Backend development with Flask
-- Problem solving and system design
-- Secure coding practices
+## API Endpoints (Examples)
+
+Devices  
+GET /api/v1/devices  
+POST /api/v1/devices  
+
+Requests  
+POST /api/v1/requests  
+PATCH /api/v1/requests/{id}/accept  
+PATCH /api/v1/requests/{id}/resolve  
+
+Users  
+POST /api/v1/persons  
+GET /api/v1/persons/{id}  
+
+---
+
+## Notes
+
+- This project is a prototype system built for educational purposes  
+- Authentication is simplified (plaintext password comparison)  
+- In production, passwords should be hashed and secured properly  
+
+---
+
+## What This Project Demonstrates
+
+- REST API design and implementation  
+- Relational database modelling  
+- Backend and frontend integration  
+- Structured system design for real-world workflows  
+- Clean project organization and version control practices  
+
+---
+
+## Author
+
+- Sepehr Kalantari Soltanieh
+- Seyed Atta Rahimi
+
+---
+
+## License
+
+This project is for educational and portfolio purposes.
