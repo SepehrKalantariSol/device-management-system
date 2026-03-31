@@ -165,7 +165,7 @@ GET /api/v1/persons/{id}
 
 ---
 
-## Author
+## Contributors
 
 - Sepehr Kalantari Soltanieh
 - Seyed Atta Rahimi
