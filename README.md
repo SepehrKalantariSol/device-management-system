@@ -3,6 +3,9 @@
 A full-stack web application for managing devices, users, and IT support requests within an organization.  
 This system simulates a real-world IT asset management and support workflow, including device tracking, user roles, and request lifecycle management.
 
+Demo video:
+https://drive.google.com/file/d/1h-W3AQhQrTLvGjQEmpAHPV4lUeXLO4B6/view?usp=share_link
+
 ---
 
 ## Overview
