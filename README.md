@@ -94,7 +94,7 @@ README.md
 
 1. Clone the repository
 
-git clone https://github.com/your-username/device-management-system.git  
+git clone https://github.com/SepehrKalantariSol/device-management-system.git
 cd device-management-system  
 
 2. Setup virtual environment
