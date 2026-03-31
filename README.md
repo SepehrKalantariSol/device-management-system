@@ -93,45 +93,50 @@ README.md
 ## Setup and Installation
 
 1. Clone the repository
-
+```bash
 git clone https://github.com/SepehrKalantariSol/device-management-system.git
-cd device-management-system  
+cd device-management-system
+```
 
 2. Setup virtual environment
-
+```bash
 python -m venv venv  
-source venv/bin/activate  
+source venv/bin/activate
+```
 
 3. Install dependencies
-
-pip install flask psycopg2 flask-cors  
+```bash
+pip install flask psycopg2 flask-cors
+```  
 
 4. Configure environment variables
-
+```bash
 export DB_NAME=device_mng  
 export DB_USER=postgres  
 export DB_PASSWORD=your_password  
 export DB_HOST=localhost  
 export DB_PORT=5432  
-
+```
 5. Setup database
-
+```bash
 Create a PostgreSQL database, then run:
 
 psql -U postgres -d device_mng -f database/schema.sql  
-
+```
 6. Run the backend
-
-python backend/app.py  
-
+```bash
+python backend/app.py
+```
+ 
 7. Open frontend
-
+```bash
 Open frontend/index.html in your browser.
+```
 
 ---
 
 ## API Endpoints (Examples)
-
+```bash
 Devices  
 GET /api/v1/devices  
 POST /api/v1/devices  
@@ -143,7 +148,8 @@ PATCH /api/v1/requests/{id}/resolve
 
 Users  
 POST /api/v1/persons  
-GET /api/v1/persons/{id}  
+GET /api/v1/persons/{id}
+```
 
 ---
 
