@@ -1,19 +1,21 @@
 from flask import Flask, request, jsonify
 import psycopg2
 import psycopg2.extras
-from datetime import datetime
 from flask_cors import CORS
+import os
+
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
 # ---- DB CONFIG ----
+
 DB_CONFIG = {
-    "dbname": "device_mng",
-    "user": "sepehr",
-    "password": "",          # empty if you didn't set one
-    "host": "localhost",
-    "port": 5432,
+    "dbname": os.getenv("DB_NAME", "device_mng"),
+    "user": os.getenv("DB_USER", "postgres"),
+    "password": os.getenv("DB_PASSWORD", ""),
+    "host": os.getenv("DB_HOST", "localhost"),
+    "port": int(os.getenv("DB_PORT", 5432)),
 }
 
 
@@ -173,7 +175,7 @@ def create_device():
         conn.rollback()
         cur.close()
         conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close()
     conn.close()
@@ -235,7 +237,7 @@ def create_request():
         conn.rollback()
         cur.close()
         conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close()
     conn.close()
@@ -297,7 +299,7 @@ def accept_request(req_id):
     except Exception as e:
         conn.rollback()
         cur.close(); conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close(); conn.close()
     return jsonify({"message": "Request accepted", "request_id": req_id, "status": "in_progress"}), 200
@@ -354,7 +356,7 @@ def resolve_request(req_id):
         conn.rollback()
         cur.close()
         conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close()
     conn.close()
@@ -362,7 +364,7 @@ def resolve_request(req_id):
     return jsonify({"message": "Request resolved", "request_id": req_id, "status": "resolved"}), 200
 
 # ======================================
-# 6) POST /api/v1/login  (simple login endpoint)
+# 6) POST /api/v1/login (prototype authentication endpoint)
 # ======================================
 
 @app.route("/api/v1/login", methods=["POST"])
@@ -801,7 +803,7 @@ def get_technicians():
             p.first_name,
             p.last_name,
             p.email,
-            p.phone
+            p.phone_number
         FROM it_technician it
         JOIN person p ON it.person_id = p.person_id
         ORDER BY p.last_name, p.first_name;
@@ -819,7 +821,7 @@ def get_technicians():
             "first_name": row["first_name"],
             "last_name": row["last_name"],
             "email": row["email"],
-            "phone": row["phone"]
+            "phone_number": row["phone_number"]
         })
 
     return jsonify(technicians), 200
@@ -986,7 +988,7 @@ def create_person():
         conn.rollback()
         cur.close()
         conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close()
     conn.close()
@@ -1106,7 +1108,7 @@ def update_person(person_id):
         conn.rollback()
         cur.close()
         conn.close()
-        return json_error(f"Database error: {str(e)}", 500)
+        return json_error("Internal server error", 500)
 
     cur.close()
     conn.close()
@@ -1127,4 +1129,4 @@ def update_person(person_id):
 
 if __name__ == "__main__":
     # For development only
-    app.run(debug=True)
+    app.run(debug=False)
